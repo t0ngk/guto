@@ -2,5 +2,5 @@
 
 </script>
 <template>
-    
+    Somthing here
 </template>
