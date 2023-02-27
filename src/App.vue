@@ -1,13 +1,22 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import navber from './components/navber.vue'
+import Footer from './components/footer.vue'
 </script>
 
 <template>
-  <h1 class="text-3xl font-bold underline">
-    Hello world!
-  </h1>
+  <navber />
+  <router-view></router-view>
+  <Footer />
 </template>
 
-<style scoped>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Prompt&display=swap');
+
+body {
+  font-family: 'Prompt', sans-serif;
+}
+
+#nav {
+  background-color: #DE7D24;
+}
 </style>
