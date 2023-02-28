@@ -1,6 +1,28 @@
 <script setup>
-
+import { TheCard } from 'flowbite-vue'
+import { Input } from 'flowbite-vue'
+import { Button } from 'flowbite-vue'
 </script>
 <template>
-    Somthing here
+    <div class="container mx-auto flex my-64 gap-40 justify-center items-center">
+        <div class="">
+            <img src="src/assets/Dog.svg" class=" w-60">
+        </div>
+        <div class="flex-col">
+            <TheCard>
+                <h1 class=" text-center mb-5 font-bold text-xl">Login</h1>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2">
+                        <Input placeholder="Enter your Username" label="Username" />
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <Input placeholder="Enter your Password" label="Password" />
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <Button color="yellow">Login</Button>
+                    </div>
+                </div>
+            </TheCard>
+        </div>
+    </div>
 </template>
