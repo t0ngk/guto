@@ -1,4 +1,4 @@
-<script>
+<script setup>
 import Flicking from "@egjs/vue3-flicking";
 import { Arrow } from "@egjs/flicking-plugins";
 import { Pagination } from "@egjs/flicking-plugins";
@@ -6,21 +6,14 @@ import { AutoPlay } from "@egjs/flicking-plugins";
 import "@egjs/flicking-plugins/dist/pagination.css";
 import "@egjs/flicking-plugins/dist/arrow.css";
 import "@egjs/vue3-flicking/dist/flicking.css";
+import { ref } from "vue";
 
-export default {
-  components: {
-    Flicking,
-  },
-  data() {
-    return {
-      plugins: [
-        new Arrow(),
-        new Pagination({ type: "bullet" }),
-        new AutoPlay({ duration: 2000, direction: "NEXT", stopOnHover: false }),
-      ],
-    };
-  },
-};
+const plugins = ref([
+  new Arrow(),
+  new Pagination({ type: "bullet" }),
+  new AutoPlay({ duration: 2000, direction: "NEXT", stopOnHover: false }),
+]);
+
 </script>
 <template>
   <Flicking :options="{ align: 'prev', circular: true }" :plugins="plugins">
