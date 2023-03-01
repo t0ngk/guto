@@ -17,7 +17,7 @@ import { Icon } from '@iconify/vue';
           </router-link>
         </NavbarLink>
         <NavbarLink>
-          <router-link to="/About" :class="[!isShowMenu ? 'navbar-item' : '', 'transition-all']">
+          <router-link to="/about" :class="[!isShowMenu ? 'navbar-item' : '', 'transition-all']">
             เกี่ยวกับเรา
           </router-link>
         </NavbarLink>
@@ -49,12 +49,12 @@ import { Icon } from '@iconify/vue';
           </router-link>
         </NavbarLink>
         <NavbarLink>
-          <router-link to="/Register" :class="[!isShowMenu ? 'navbar-item' : '', 'transition-all']">
+          <router-link to="/register" :class="[!isShowMenu ? 'navbar-item' : '', 'transition-all']">
             สมัครสมาชิก
           </router-link>
         </NavbarLink>
         <NavbarLink>
-          <router-link to="/Login" :class="[!isShowMenu ? 'navbar-item' : '', 'transition-all']">
+          <router-link to="/login" :class="[!isShowMenu ? 'navbar-item' : '', 'transition-all']">
             เข้าสู่ระบบ
           </router-link>
       </NavbarLink>
