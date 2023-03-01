@@ -12,6 +12,7 @@
     "@egjs/vue3-flicking": "^4.10.6",
     "flowbite": "^1.6.3",
     "flowbite-vue": "^0.0.10",
+    "primevue": "^3",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6"
   },
