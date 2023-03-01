@@ -9,11 +9,11 @@ import Appointment from '../components/Appointment.vue'
 
 const routes = [
     {path: '/', component: Home},
-    {path: '/Login', component: Login},
+    {path: '/login', component: Login},
     {path: '/lab', component: Lab},
-    {path: '/Register', component: Register},
-    {path: '/About', component: About},
-    {path: '/Appointment', component: Appointment},
+    {path: '/register', component: Register},
+    {path: '/about', component: About},
+    {path: '/appointment', component: Appointment},
 ]
 
 const  router = createRouter({
