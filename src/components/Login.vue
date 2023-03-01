@@ -4,8 +4,8 @@ import { Input } from 'flowbite-vue'
 import { Button } from 'flowbite-vue'
 </script>
 <template>
-    <div class="w-screen h-screen flex">
-        <div class="w-1/2 bg-primary-400 md:flex flex-col justify-center items-center hidden">
+    <div class="w-screen h-screen flex transition-all">
+        <div class="w-1/2 bg-primary md:flex flex-col justify-center items-center hidden">
             <img src="src/assets/Dog.svg" alt="" srcset="" class="w-1/4">
             <h1 class="text-5xl text-white">Guto</h1>
         </div>
@@ -15,14 +15,14 @@ import { Button } from 'flowbite-vue'
                     <h1 class="text-xl text-center">Login</h1>
                     <div class="flex flex-col md:flex-row gap-4">
                         <div class="w-full">
-                            <Input placeholder="Enter your Username" label="Username" />
+                            <Input placeholder="Enter your Email" label="Email" />
                         </div>
                         <div class="w-full">
                             <Input placeholder="Enter your Password" label="Password" />
                         </div>
                     </div>
                     <div class="flex justify-end">
-                        <Button class="bg-primary hover:bg-primary-400 transition-all">Login</Button>
+                        <Button class="bg-primary hover:bg-primary-400 active:bg-primary-600 transition-all">Login</Button>
                     </div>
             </div>
         </div>
