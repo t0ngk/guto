@@ -7,11 +7,11 @@ import { useRoute } from 'vue-router';
 const route = useRoute();
 
 watch(route, () => {
-  pathname.value = route.path;
+  pathname.value = route.path.toLowerCase();
 });
 
 const pathname = ref();
-const noNeedNavBar = ['/Login', '/Register'];
+const noNeedNavBar = ['/login', '/register'];
 
 </script>
 
