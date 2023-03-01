@@ -1,5 +1,6 @@
 <script setup>
   import Slide from './Slide.vue' 
+  import { Button } from 'flowbite-vue';
 </script>
 
 <template>
@@ -31,9 +32,9 @@
               และมาตรฐานระดับสากล รวมถึงประสานการส่งต่อสัตว์ป่วยเพื่อรับคำปรึกษา
               หรือเข้ามารับการดูแลและส่งกลับไปดูแลต่อยังเจ้าของ
             </p>
-            <button class="bg-primary text-white font-bold py-2 px-4 rounded-full hover:bg-[#FFC46B]">
+            <Button class="bg-primary hover:bg-primary-400 active:bg-primary-600 transition-all">
               อ่านเพิ่มเติม
-            </button>
+            </Button>
           </div>
         </div>
         <div class=" bg-white rounded-lg shadow-lg p-4">
@@ -47,9 +48,9 @@
               และมาตรฐานระดับสากล รวมถึงประสานการส่งต่อสัตว์ป่วยเพื่อรับคำปรึกษา
               หรือเข้ามารับการดูแลและส่งกลับไปดูแลต่อยังเจ้าของ
             </p>
-            <button class="bg-primary text-white font-bold py-2 px-4 rounded-full hover:bg-[#FFC46B]">
+            <Button class="bg-primary hover:bg-primary-400 active:bg-primary-600 transition-all">
               อ่านเพิ่มเติม
-            </button>
+            </Button>
           </div>
         </div>
       </div>
