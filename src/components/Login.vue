@@ -10,7 +10,7 @@ import { Button } from 'flowbite-vue'
             <h1 class="text-5xl text-white">Guto</h1>
         </div>
         <div class="w-full md:w-1/2 flex justify-center items-center p-4">
-            <div class="shadow p-4">
+            <div class="shadow p-4 rounded">
                 <div class="flex flex-col gap-4">
                     <h1 class="text-xl text-center">Login</h1>
                     <div class="flex flex-col md:flex-row gap-4">
