@@ -1,7 +1,7 @@
 <script setup>
-import { TheCard } from 'flowbite-vue'
-import { Input } from 'flowbite-vue'
-import { Button } from 'flowbite-vue'
+    import { TheCard } from 'flowbite-vue'
+    import { Input } from 'flowbite-vue'
+    import { Button } from 'flowbite-vue'
 </script>
 <template>
     <div class="container mx-auto flex my-64 gap-40 justify-center items-center">

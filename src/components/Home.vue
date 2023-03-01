@@ -1,15 +1,5 @@
 <script setup>
-import Slide from './Slide.vue' 
-</script>
-<script>
-export default {
-  name: 'Home',
-  data() {
-    return {
-
-    }
-  },
-}
+  import Slide from './Slide.vue' 
 </script>
 
 <template>
@@ -18,7 +8,7 @@ export default {
       <h1 class=" text-2xl font-black mb-4">
         ศูนย์ความเป็นเลิศด้านการดูแล และ ศูนย์ความเป็นเลิศด้านการรักษา
       </h1>
-      <p class="text-[#DE7D24] text-base font-bold">ศูนย์ความเป็นเลิศด้านการดูแลคลินิกสัตว์เลี้ย ครอบคลุมทั้งการตรวจ รักษา
+      <p class="text-primary text-base font-bold">ศูนย์ความเป็นเลิศด้านการดูแลคลินิกสัตว์เลี้ย ครอบคลุมทั้งการตรวจ รักษา
         และดูแลอย่างต่อเนื่อง ด้วยประสบการณ์
         และมาตรฐานระดับสากล รวมถึงประสานการส่งต่อสัตว์ป่วยเพื่อรับคำปรึกษา
         หรือเข้ามารับการดูแลและส่งกลับไปดูแลต่อยังเจ้าของ</p>
@@ -41,7 +31,7 @@ export default {
               และมาตรฐานระดับสากล รวมถึงประสานการส่งต่อสัตว์ป่วยเพื่อรับคำปรึกษา
               หรือเข้ามารับการดูแลและส่งกลับไปดูแลต่อยังเจ้าของ
             </p>
-            <button class="bg-[#DE7D24] text-white font-bold py-2 px-4 rounded-full hover:bg-[#FFC46B]">
+            <button class="bg-primary text-white font-bold py-2 px-4 rounded-full hover:bg-[#FFC46B]">
               อ่านเพิ่มเติม
             </button>
           </div>
@@ -57,7 +47,7 @@ export default {
               และมาตรฐานระดับสากล รวมถึงประสานการส่งต่อสัตว์ป่วยเพื่อรับคำปรึกษา
               หรือเข้ามารับการดูแลและส่งกลับไปดูแลต่อยังเจ้าของ
             </p>
-            <button class="bg-[#DE7D24] text-white font-bold py-2 px-4 rounded-full hover:bg-[#FFC46B]">
+            <button class="bg-primary text-white font-bold py-2 px-4 rounded-full hover:bg-[#FFC46B]">
               อ่านเพิ่มเติม
             </button>
           </div>

@@ -1,5 +1,5 @@
 <script setup>
-  import Slide from './Slide.vue';
+import Slide from './Slide.vue';
 </script>
 
 <template>

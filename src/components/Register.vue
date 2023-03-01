@@ -2,16 +2,6 @@
 import { Input } from 'flowbite-vue'
 import { Dropdown, ListGroup, ListGroupItem } from 'flowbite-vue'
 </script>
-<script>
-export default {
-    name: 'Register',
-    data() {
-        return {
-
-        }
-    },
-}
-</script>
 
 <template>
     <div class=" container border-[1px] border-b-0 border-black mt-16 mx-auto bg-[#FFC46B]">
