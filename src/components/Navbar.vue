@@ -26,7 +26,7 @@ export default {
           </router-link>
         </NavbarLink>
         <NavbarLink>
-          <router-link to="/about" :class="[!isShowMenu ? 'navbar-item' : '', 'transition-all']">
+          <router-link to="/About" :class="[!isShowMenu ? 'navbar-item' : '', 'transition-all']">
             เกี่ยวกับเรา
           </router-link>
         </NavbarLink>
@@ -69,7 +69,7 @@ export default {
       </NavbarLink>
       <NavbarLink>
         <router-link to="/Login" :class="[!isShowMenu ? 'navbar-item' : '', 'transition-all']">
-          เข้าสู้ระบบ
+          เข้าสู่ระบบ
         </router-link>
         </NavbarLink>
       </NavbarCollapse>
