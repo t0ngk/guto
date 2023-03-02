@@ -4,6 +4,8 @@ import { Icon } from '@iconify/vue';
 import { onMounted, reactive, ref } from 'vue'
 import PermissionTable from '../components/PermissionTable.vue'
 import EmployeePetTable from '../components/EmployeePetTable.vue'
+import EmployeeAppointmentTable from '../components/EmployeeAppointmentTable.vue'
+import EmployeeBill from '../components/EmployeeBill.vue'
 const Sidebar = [{
   title: 'User',
   icon: 'material-symbols:person',
@@ -36,7 +38,9 @@ let active = ref('user')
 
 const employeeComponent = {
   permission : PermissionTable,
-  pets: EmployeePetTable
+  pets: EmployeePetTable,
+  appointments: EmployeeAppointmentTable,
+  bills: EmployeeBill,
 }
 
 const menus = {
