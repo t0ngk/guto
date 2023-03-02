@@ -1,5 +1,5 @@
 <script setup>
-import { Modal } from 'flowbite-vue'
+import { Modal, Input } from 'flowbite-vue'
 import { ref } from 'vue'
 
 const isShowModal = ref(false)
@@ -79,16 +79,17 @@ function showModal() {
       </div>
     </template>
     <template #body>
-      <div class="flex flex-col">
+      <!-- <div class="flex flex-col">
         <label for="petName" class="text-sm font-medium text-gray-700 dark:text-gray-200">Pet name</label>
         <input type="text" id="petName"
-          class="block p-2 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          class="block p-2 text-sm text-gray-900 border border-gray-300 rounded-lg w-full bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="Pet name">
-      </div>
-      <div class="flex flex-col mt-4">
+      </div> -->
+      <Input placeholder="Pet name" label="Pet name"></Input>
+      <div class="flex flex-col mt-4 gap-2">
         <label for="petType" class="text-sm font-medium text-gray-700 dark:text-gray-200">Pet type</label>
         <select id="petType"
-          class="block p-2 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          class="block p-2 text-sm text-gray-900 border border-gray-300 rounded-lg w-full bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
           <option value="dog">Dog</option>
           <option value="cat">Cat</option>
         </select>

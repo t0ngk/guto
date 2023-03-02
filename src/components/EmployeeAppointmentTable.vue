@@ -98,7 +98,7 @@ function showModal() {
       </div>
     </template>
     <template #body>
-      <div class="flex flex-col">
+      <div class="flex flex-col gap-2">
         <Input placeholder="enter your Name" label="Name" />
         <Input placeholder="enter your Desciption" label="Desciption" />
         <label for="petType" class="text-sm font-medium text-gray-700 dark:text-gray-200">Type</label>

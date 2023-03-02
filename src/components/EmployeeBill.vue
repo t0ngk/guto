@@ -32,7 +32,7 @@ function showModal() {
               placeholder="Search for items">
             <button @click="showModal" type="button"
               class=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-              Add Appointment
+              Add Bill
             </button>
           </div>
         </div>
@@ -82,16 +82,16 @@ function showModal() {
   <Modal :size="size" v-if="isShowModal" @close="closeModal">
     <template #header>
       <div class="flex items-center text-lg">
-        Add Appointment
+        Add Bill
       </div>
     </template>
     <template #body>
-      <div class="flex flex-col">
+      <div class="flex flex-col gap-2">
         <Input placeholder="Details Bill" label="Details" />
         <Input type="date" placeholder="Date of bill" label="Date" />
         <label for="petType" class="text-sm font-medium text-gray-700 dark:text-gray-200">State</label>
         <select id="petType"
-          class="block p-2 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
           <option value="dog">ยังไม่ชำระเงิน</option>
           <option value="cat">ชำระเงินแล้ว</option>
         </select>
