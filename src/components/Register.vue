@@ -53,6 +53,7 @@ const register = (event) => {
                     <Input placeholder="Confirm Password" type="password" label="Confirm Password" class="w-full" name="confirm_password" />
                 </div>
                 <div class="flex w-full justify-end">
+                    <a href="/register">สมัครอ๊ะยัง?</a>
                     <Button class="w-full md:w-1/4 bg-primary hover:bg-primary-400 active:bg-primary-600 transition-all">Register</Button>
                 </div>
             </form>
