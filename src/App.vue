@@ -17,5 +17,4 @@ const noNeedNavBar = ['/login', '/register'];
 <template>
   <Navbar v-if="!(noNeedNavBar.includes(pathname))" />
   <router-view></router-view>
-  <Footer v-if="!(noNeedNavBar.includes(pathname))" />
 </template>
