@@ -37,7 +37,7 @@
             </Button>
           </div>
         </div>
-        <div class=" bg-white rounded-lg shadow-lg p-4">
+        <div class=" bg-white rounded-lg shadow-2xl p-4">
           <div class=" text-center">
             <img class="mx-auto my-2 w-10/12 h-2/3" src="src/assets/Animal-Care-Welfare-First-aid.jpg" alt="logo" />
             <h1 class=" text-xl font-bold my-3">
