@@ -128,39 +128,15 @@ let user = reactive(users.find(user => user.id === userId));
             </div>
           </div>
           <div class="my-4">
-            <div class="mb-6">
-              <label for="default-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ชื่อ</label>
-              <input type="text" id="default-input"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                :disabled="true" :value="user.first_name">
-            </div>
-            <div class="mb-6">
-              <label for="default-input"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">นามสกุล</label>
-              <input type="text" id="default-input"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                :disabled="true" :value="user.last_name">
-            </div>
-            <div class="mb-6">
-              <label for="default-input"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">เบอร์โทรศัพท์</label>
-              <input type="text" id="default-input"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                :disabled="true" :value="user.phone_number">
-            </div>
-            <div class="mb-6">
-              <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ที่อยู่</label>
-              <textarea id="message" rows="2" :disabled="true"
-                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Write your thoughts here..." :value="user.address"></textarea>
-            </div>
-            <div class="mb-6">
-              <label for="default-input"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">อีเมล</label>
-              <input type="text" id="default-input"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                :disabled="true" :value="user.email">
-            </div>
+            <Input :disabled="true" placeholder="enter your First name" v-model="user.first_name" label="ชื่อ" />
+            <Input :disabled="true" placeholder="enter your Last name" v-model="user.last_name" label="นามสกุล" />
+            <Input :disabled="true" placeholder="enter your Phone number" v-model="user.phone_number" label="เบอร์โทรศัพท์" />
+            <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ที่อยู่</label>
+            <textarea id="message" rows="2" :disabled="true"
+              class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Write your thoughts here..."
+              v-model="user.address"></textarea>
+            <Input :disabled="true" placeholder="enter your Email" v-model="user.email" label="อีเมล" />
           </div>
           <div class="flex justify-end">
             <Button>Log out</Button>
