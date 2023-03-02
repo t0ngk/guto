@@ -1,4 +1,5 @@
 <script setup>
+import { Avatar } from 'flowbite-vue'
 import { Navbar, NavbarLogo, NavbarCollapse, NavbarLink } from 'flowbite-vue'
 import { Dropdown, ListGroup, ListGroupItem } from 'flowbite-vue'
 import { Icon } from '@iconify/vue';
@@ -21,9 +22,9 @@ import { Icon } from '@iconify/vue';
             เกี่ยวกับเรา
           </router-link>
         </NavbarLink>
-        <NavbarLink >
+        <NavbarLink>
           <router-link to="" :class="[!isShowMenu ? 'navbar-item' : '', 'transition-all']">
-            <dropdown text="Bottom" >
+            <dropdown text="Bottom">
               <template #trigger>
                 <div class="flex items-center">บริการ
                   <span>
@@ -36,13 +37,17 @@ import { Icon } from '@iconify/vue';
                   <template #prefix>
                     <Icon icon="material-symbols:pets" class="text-xl"></Icon>
                   </template>
-                  PetCare
+                  <router-link to="/petcare">
+                    PetCare
+                  </router-link>
                 </list-group-item>
                 <list-group-item>
                   <template #prefix>
                     <Icon icon="material-symbols:add-circle-rounded" class="text-xl"></Icon>
                   </template>
-                  PetHealth
+                  <router-link to="/pethealth">
+                    PetHealth
+                  </router-link>
                 </list-group-item>
               </list-group>
             </dropdown>
@@ -58,6 +63,9 @@ import { Icon } from '@iconify/vue';
             เข้าสู่ระบบ
           </router-link>
       </NavbarLink>
+      <!-- <NavbarLink>
+        <Avatar rounded />
+      </NavbarLink> -->
     </NavbarCollapse>
   </template>
 </Navbar>
@@ -66,9 +74,9 @@ import { Icon } from '@iconify/vue';
         <div class="flex items-center justify-between">
           <router-link to="/" class="hover:text-blue-400">
             <div class="flex items-center">
-                <a href="" class="w-14">
-                  <img src="src/assets/Dog.svg" alt="logo" />
-                      </a>
+                  <a href="" class="w-14">
+                    <img src="src/assets/Dog.svg" alt="logo" />
+                        </a>
                   </div>
                 </router-link> -->
 
@@ -77,11 +85,11 @@ import { Icon } from '@iconify/vue';
             <button type="button" class=" text-gray-800 hover:text-gray-400 focus:outline-none focus:text-gray-400">
               <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current">
                 <path fill-rule="evenodd"
-                    d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z">
-                  </path>
-                </svg>
-              </button>
-            </div> -->
+                      d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z">
+                    </path>
+                  </svg>
+                </button>
+              </div> -->
 <!-- </div> -->
 
 
@@ -111,9 +119,9 @@ import { Icon } from '@iconify/vue';
             <li class="text-sm font-bold text-white hover:text-gray-800">
               <a href="/Login">
                 เข้าสู้ระบบ
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div> -->
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div> -->
 </template>
