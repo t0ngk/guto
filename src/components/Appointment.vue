@@ -55,7 +55,7 @@ const stateName = ['a', 'b', 'c', 'd', 'e']
         <hr class="my-7">
 
         <!--Appointment Details Here-->
-        <div class="container mx-auto my-16" v-if="state == 1">
+        <div class="container mx-auto my-16" v-if="state == 3">
             <div class="flex justify-center gap-12">
                 <div class="flex items-center pl-4 border border-gray-200 rounded w-1/6">
                     <input id="bordered-radio-1" type="radio" value="PetCare" name="bordered-radio"
@@ -123,7 +123,7 @@ const stateName = ['a', 'b', 'c', 'd', 'e']
                     time }}</label>
             </div>
         </div>
-        <div class="container mx-auto my-16" v-if="state == 3">
+        <div class="container mx-auto my-16" v-if="state == 1">
             <div>
                 <h1 class="text-xl font-semibold">ข้อมูลสัตว์เลี้ยง</h1>
                 <hr class="my-3">
