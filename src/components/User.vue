@@ -105,7 +105,7 @@ let user = reactive(users.find(user => user.id === userId));
 
 <template>
   <div class="flex justify-center items-center w-full p-4">
-    <div class="flex shadow-2xl h-[35rem] p-4 gap-4 rounded-lg w-11/12 border">
+    <div class="flex shadow-2xl h-[37rem] p-4 gap-4 rounded-lg w-11/12 border">
       <aside class="z-40 flex flex-col w-1/4 transition-transform -translate-x-full sm:translate-x-0"
         aria-label="Sidebar">
         <div class="px-3 rounded-lg h-full py-4 overflow-y-auto bg-primary-100 dark:bg-gray-800">
@@ -131,7 +131,7 @@ let user = reactive(users.find(user => user.id === userId));
               <Button>Edit</Button>
             </div>
           </div>
-          <div class="my-4">
+          <div class="my-4 flex flex-col gap-2">
             <Input :disabled="true" placeholder="enter your First name" v-model="user.first_name" label="ชื่อ" />
             <Input :disabled="true" placeholder="enter your Last name" v-model="user.last_name" label="นามสกุล" />
             <Input :disabled="true" placeholder="enter your Phone number" v-model="user.phone_number" label="เบอร์โทรศัพท์" />
