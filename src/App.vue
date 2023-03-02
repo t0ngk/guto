@@ -12,7 +12,6 @@ watch(route, () => {
 
 const pathname = ref();
 const noNeedNavBar = ['/login', '/register'];
-
 </script>
 
 <template>

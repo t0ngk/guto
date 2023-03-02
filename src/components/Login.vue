@@ -1,7 +1,25 @@
 <script setup>
-import { TheCard } from 'flowbite-vue'
 import { Input } from 'flowbite-vue'
 import { Button } from 'flowbite-vue'
+
+const login = (event) => {
+    const formData = new FormData(event.target)
+    const data = Object.fromEntries(formData.entries())
+    const users = JSON.parse(localStorage.getItem('users')) || []
+    const user = users.find(user => user.email === data.email)
+    if (!user) {
+        alert('User does not exist')
+        return
+    }
+    if (user.password !== data.password) {
+        alert('Password does not match')
+        return
+    }
+    alert('Login successful')
+    window.localStorage.setItem('user', JSON.stringify(user.id))
+    window.location.href = '/'
+}
+
 </script>
 <template>
     <div class="w-screen h-screen flex transition-all">
@@ -10,43 +28,22 @@ import { Button } from 'flowbite-vue'
             <h1 class="text-5xl text-white">Guto</h1>
         </div>
         <div class="w-full md:w-1/2 flex justify-center items-center p-4">
-            <div class="shadow p-4 rounded">
+            <form @submit.prevent="login" class="shadow p-4 rounded">
                 <div class="flex flex-col gap-4">
                     <h1 class="text-xl text-center">Login</h1>
                     <div class="flex flex-col md:flex-row gap-4">
                         <div class="w-full">
-                            <Input placeholder="Enter your Email" label="Email" />
+                            <Input placeholder="Enter your Email" label="Email" name="email" />
                         </div>
                         <div class="w-full">
-                            <Input placeholder="Enter your Password" label="Password" />
+                            <Input type="password" placeholder="Enter your Password" label="Password" name="password" />
                         </div>
                     </div>
                     <div class="flex justify-end">
                         <Button class="bg-primary hover:bg-primary-400 active:bg-primary-600 transition-all">Login</Button>
                     </div>
-            </div>
+                </div>
+            </form>
         </div>
     </div>
-</div>
-<!-- <div class="container mx-auto flex my-64 gap-40 justify-center items-center">
-        <div class="">
-            <img src="src/assets/Dog.svg" class=" w-60">
-        </div>
-        <div class="flex-col">
-            <TheCard>
-                <h1 class=" text-center mb-5 font-bold text-xl">Login</h1>
-                <div class="flex flex-col gap-4">
-                    <div class="flex flex-col gap-2">
-                        <Input placeholder="Enter your Username" label="Username" />
-                    </div>
-                    <div class="flex flex-col gap-2">
-                        <Input placeholder="Enter your Password" label="Password" />
-                    </div>
-                    <div class="flex flex-col gap-2">
-                        <Button color="yellow">Login</Button>
-                                </div>
-                            </div>
-                        </TheCard>
-                    </div>
-                </div> -->
 </template>
