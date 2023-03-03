@@ -1,5 +1,5 @@
 <script setup>
-import { Modal, Input } from 'flowbite-vue'
+import { Modal, Input, Button } from 'flowbite-vue'
 import { computed, ref } from 'vue'
 
 const pets = ref(JSON.parse(localStorage.getItem('pets')) || []);
