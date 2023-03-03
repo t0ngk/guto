@@ -39,7 +39,8 @@ const login = (event) => {
                             <Input type="password" placeholder="Enter your Password" label="Password" name="password" />
                         </div>
                     </div>
-                    <div class="flex justify-end">
+                    <div class="flex justify-end gap-4 items-center">
+                        <a href="/register">สมัครอ๊ะยัง?</a>
                         <Button class="bg-primary hover:bg-primary-400 active:bg-primary-600 transition-all">Login</Button>
                     </div>
                 </div>
