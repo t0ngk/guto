@@ -41,6 +41,9 @@ const AllTime = {
 }
 const stateName = ['a', 'b', 'c', 'd', 'e']
 
+const confirmForm = () => {
+    window.location.href = '/user'
+}
 
 </script>
 
@@ -151,7 +154,9 @@ const stateName = ['a', 'b', 'c', 'd', 'e']
                         option</label>
                     <select id="countries"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                        <option selected>Choose a country</option>
+                        <option selected>Choose a pet</option>
+                        <option selected>Mumu</option>
+                        <option selected>Yuzu</option>
                     </select>
                 </div>
                 <div v-else-if="checkstep == 'no'">
@@ -247,7 +252,7 @@ const stateName = ['a', 'b', 'c', 'd', 'e']
         <div class="flex justify-between">
             <Button class="bg-primary" v-if="state > 1" @click="state--">Previous</Button>
             <Button class="bg-primary" v-if="state != 5" @click="state++">Next</Button>
-            <Button class="bg-primary" v-if="state == 5" @click="state++">Confirm</Button>
+            <Button class="bg-primary" v-if="state == 5" @click="confirmForm">Confirm</Button>
         </div>
     </div>
 </template>

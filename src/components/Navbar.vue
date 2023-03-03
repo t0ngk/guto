@@ -3,6 +3,13 @@ import { Avatar } from 'flowbite-vue'
 import { Navbar, NavbarLogo, NavbarCollapse, NavbarLink } from 'flowbite-vue'
 import { Dropdown, ListGroup, ListGroupItem } from 'flowbite-vue'
 import { Icon } from '@iconify/vue';
+import { ref } from 'vue';
+
+const users = ref(JSON.parse(localStorage.getItem('users')) || []);
+const userId = ref(localStorage.getItem('user') || null);
+const user = ref(users.value.find(user => user.id == userId.value));
+console.log(user.value);
+
 </script>
 <template>
   <Navbar class="navbar">
@@ -15,11 +22,6 @@ import { Icon } from '@iconify/vue';
         <NavbarLink>
           <router-link to="/" :class="[!isShowMenu ? 'navbar-item' : '', 'transition-all']">
             หน้าแรก
-          </router-link>
-        </NavbarLink>
-        <NavbarLink>
-          <router-link to="/about" :class="[!isShowMenu ? 'navbar-item' : '', 'transition-all']">
-            เกี่ยวกับเรา
           </router-link>
         </NavbarLink>
         <NavbarLink>
@@ -53,19 +55,26 @@ import { Icon } from '@iconify/vue';
             </dropdown>
           </router-link>
         </NavbarLink>
-        <NavbarLink>
+        <NavbarLink v-if="!userId">
           <router-link to="/register" :class="[!isShowMenu ? 'navbar-item' : '', 'transition-all']">
             สมัครสมาชิก
           </router-link>
         </NavbarLink>
-        <NavbarLink>
+        <NavbarLink v-if="!userId">
           <router-link to="/login" :class="[!isShowMenu ? 'navbar-item' : '', 'transition-all']">
             เข้าสู่ระบบ
           </router-link>
       </NavbarLink>
-      <!-- <NavbarLink>
-        <Avatar rounded />
-      </NavbarLink> -->
+        <NavbarLink v-if="user?.permission == 0">
+          <router-link to="/appointment" :class="[!isShowMenu ? 'navbar-item' : '', 'transition-all']">
+            นัดหมาย
+          </router-link>
+      </NavbarLink>
+      <NavbarLink v-if="userId">
+        <router-link to="/user" :class="[!isShowMenu ? 'navbar-item' : '', 'transition-all']">
+            <Avatar rounded />
+          </router-link>
+      </NavbarLink>
     </NavbarCollapse>
   </template>
 </Navbar>

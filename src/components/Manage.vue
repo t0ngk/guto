@@ -1,37 +1,32 @@
 <script setup>
-import { Button, Input, Modal } from 'flowbite-vue'
+import { Button, Input } from 'flowbite-vue'
 import { Icon } from '@iconify/vue';
 import { onMounted, reactive, ref } from 'vue'
 import PermissionTable from '../components/PermissionTable.vue'
 import EmployeePetTable from '../components/EmployeePetTable.vue'
 import EmployeeAppointmentTable from '../components/EmployeeAppointmentTable.vue'
 import EmployeeBill from '../components/EmployeeBill.vue'
-const Sidebar = [{
-  title: 'User',
-  icon: 'material-symbols:person',
-  value: 'user',
-  permission: 0
-},
+const Sidebar = [
 {
   title: 'Permission',
   icon: 'material-symbols:person',
   value: 'permission',
-  permission: 1
+  permission: 2
 }, {
   title: 'Pets',
   icon: 'material-symbols:pets',
   value: 'pets',
-  permission: 0
+  permission: 1
 }, {
   title: 'Appointments',
   icon: 'material-symbols:calendar-month',
   value: 'appointments',
-  permission: 0
+  permission: 1
 }, {
   title: 'Bills',
   icon: 'material-symbols:payments-outline-sharp',
   value: 'bills',
-  permission: 0
+  permission: 1
 }];
 
 let active = ref('user')
@@ -42,23 +37,6 @@ const employeeComponent = {
   appointments: EmployeeAppointmentTable,
   bills: EmployeeBill,
 }
-
-const logout = () => {
-  localStorage.removeItem('user');
-  window.location.href = '/';
-}
-
-let isShowModal = ref(false);
-
-const showModal = () => {
-  isShowModal.value = true;
-}
-
-const hideModal = () => {
-  isShowModal.value = false;
-}
-
-let editMode = ref(false);
 
 const menus = {
   pets: [{
@@ -144,53 +122,29 @@ let user = reactive(users.find(user => user.id === userId));
           <div class="flex justify-between gap-4 w-full">
             <H1 class="text-xl">User</H1>
             <div class="flex gap-4">
-              <Button @click="showModal">Change Password</Button>
-              <Button @click="editMode = !editMode">{{ !editMode ? 'Edit' : 'Done' }}</Button>
+              <Button>Change Password</Button>
+              <Button>Edit</Button>
             </div>
           </div>
           <div class="my-4 flex flex-col gap-2">
-            <Input :disabled="!editMode" placeholder="enter your First name" v-model="user.first_name" label="ชื่อ" />
-            <Input :disabled="!editMode" placeholder="enter your Last name" v-model="user.last_name" label="นามสกุล" />
-            <Input :disabled="!editMode" placeholder="enter your Phone number" v-model="user.phone_number" label="เบอร์โทรศัพท์" />
+            <Input :disabled="true" placeholder="enter your First name" v-model="user.first_name" label="ชื่อ" />
+            <Input :disabled="true" placeholder="enter your Last name" v-model="user.last_name" label="นามสกุล" />
+            <Input :disabled="true" placeholder="enter your Phone number" v-model="user.phone_number" label="เบอร์โทรศัพท์" />
             <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ที่อยู่</label>
-            <textarea id="message" rows="2" :disabled="!editMode"
+            <textarea id="message" rows="2" :disabled="true"
               class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Write your thoughts here..."
               v-model="user.address"></textarea>
-            <Input :disabled="!editMode" placeholder="enter your Email" v-model="user.email" label="อีเมล" />
+            <Input :disabled="true" placeholder="enter your Email" v-model="user.email" label="อีเมล" />
           </div>
           <div class="flex justify-end">
-            <Button @click="logout">Log out</Button>
+            <Button>Log out</Button>
           </div>
         </div>
-        <div v-else-if="user.permission > 0" class="flex w-full flex-wrap">
+        <div v-else="user.permission > 0" class="flex w-full flex-wrap">
           <component :is="employeeComponent[active]"></component>
-        </div>
-        <div v-else class="flex gap-4 w-full flex-wrap">
-          <div v-for="item in menus[active]" class="w-1/4">
-            <div class=" shadow-2xl border rounded-lg p-4 flex flex-col gap-4 w-full">
-              <h1 class="text-xl">{{ item.title }}</h1>
-              <p v-for="desc in item.desc">
-                {{ desc.title }} : {{ desc.value }}
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </div>
   </div>
-
-  <Modal v-if="isShowModal" @close="hideModal">
-    <template #header>
-      Change Password
-    </template>
-    <template #body>
-      <div class="flex flex-col gap-2">
-        <Input label="Old password" type="password"></Input>
-        <Input label="New password" type="password"></Input>
-        <Input label="Confirm password" type="password"></Input>
-        <Button @click="hideModal">Save</Button>
-      </div>
-    </template>
-  </Modal>
 </template>

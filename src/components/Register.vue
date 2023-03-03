@@ -18,6 +18,7 @@ const register = (event) => {
         ...data,
         id: users.length,
         permission: users.length === 0 ? '2' : '0',
+        petId: []
     });
     alert('User registered successfully');
     localStorage.setItem('users', JSON.stringify(users));

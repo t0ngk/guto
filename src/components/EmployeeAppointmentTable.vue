@@ -1,7 +1,50 @@
 <script setup>
 import { Input } from 'flowbite-vue'
 import { Modal } from 'flowbite-vue'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+
+const pets = ref(JSON.parse(localStorage.getItem('pets')) || []);
+const appointments = ref(JSON.parse(localStorage.getItem('appointments')) || []);
+
+const addAppointment = (event) => {
+  const formData = new FormData(event.target);
+  let data = ref(Object.fromEntries(formData));
+  
+  let pet = pets.value.find(pet => pet.id == data.value.petId);
+
+  let id = appointments.value.length + 1;
+
+  appointments.value.push({
+    id: id,
+    title: data.value.title,
+    desc: data.value.desc,
+    date: data.value.date,
+    type: data.value.type,
+    state: data.value.state,
+    bill: null
+  })
+
+  pet.appointmentId.push(id);
+
+  localStorage.setItem('appointments', JSON.stringify(appointments.value));
+  localStorage.setItem('pets', JSON.stringify(pets.value));
+
+  closeModal();
+}
+
+let filterAppointment = ref('all');
+let filterValue = ref('');
+
+const filteredAppointments = computed(() => {
+  let filtered = [];
+  if (filterAppointment.value === 'all') {
+    filtered = appointments.value;
+  } else {
+    const pet = pets.value.find(pet => pet.id == filterAppointment.value);
+    filtered = appointments.value.filter(appointment => pet.appointmentId.includes(appointment.id));
+  }
+  return filtered.filter(appointment => appointment.title.toLowerCase().includes(filterValue.value.toLowerCase()));
+});
 
 const isShowModal = ref(false)
 function closeModal() {
@@ -9,6 +52,14 @@ function closeModal() {
 }
 function showModal() {
   isShowModal.value = true
+}
+
+let isShowEditModal = ref(false)
+function closeEditModal() {
+  isShowEditModal.value = false
+}
+function showEditModal() {
+  isShowEditModal.value = true
 }
 </script>
 <template>
@@ -27,10 +78,20 @@ function showModal() {
             </svg>
           </div>
           <div class="flex justify-between">
-            <input type="text" id="table-search"
-              class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Search for items">
-              <button @click="showModal" type="button"
+            <div class="flex gap-2">
+              <input v-model="filterValue" type="text" id="table-search"
+                class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Search for items">
+                <div class="flex gap-2 items-center">
+                  <label for="petType" class="text-sm font-medium text-gray-700 dark:text-gray-200">From</label>
+                  <select id="petType" v-model="filterAppointment"
+                    class="block p-2 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option value="all">All</option>
+                    <option v-for="pet in pets" :value="pet.id">{{ pet.id }} - {{ pet.name }}</option>
+                  </select>
+                </div>
+            </div>
+            <button @click="showModal" type="button"
               class=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
               Add Appointment
             </button>
@@ -64,27 +125,30 @@ function showModal() {
           </tr>
         </thead>
         <tbody>
-          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50">
+          <tr v-if="filteredAppointments.length == 0" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50">
+            <td colspan="7" class="text-center p-4">ไม่มีข้อมูล</td>
+          </tr>
+          <tr v-for="appointment in filteredAppointments" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50">
             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-              1
+              {{ appointment.id }}
             </th>
             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowr">
-              นัดฉีดยา
+              {{ appointment.title }}
             </th>
             <td class="px-6 py-4">
-              ฉีดยากันพิษสุนัขบ้า
+              {{ appointment.desc }}
             </td>
             <td class="px-6 py-4">
-              PetHealth
+              {{ appointment.type }}
             </td>
             <td class="px-6 py-4">
-              กำลังดำเนินการ
+              {{ appointment.state }}
             </td>
             <td class="px-6 py-4">
-              2021-05-05
+              {{ appointment.date }}
             </td>
             <td class="px-6 py-4">
-              <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+              <a @click="showEditModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
             </td>
           </tr>
         </tbody>
@@ -98,35 +162,76 @@ function showModal() {
       </div>
     </template>
     <template #body>
-      <div class="flex flex-col gap-2">
-        <Input placeholder="enter your Name" label="Name" />
-        <Input placeholder="enter your Desciption" label="Desciption" />
+      <form @submit.prevent="addAppointment" class="flex flex-col gap-2">
+        <label for="petType" class="text-sm font-medium text-gray-700 dark:text-gray-200">Pet</label>
+        <select id="petType" name="petId"
+                    class="block p-2 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option v-for="pet in pets" :value="pet.id">{{ pet.id }} - {{ pet.name }}</option>
+                  </select>
+        <Input placeholder="enter your Name" label="Name" name="title" />
+        <Input placeholder="enter your Desciption" label="Desciption" name="desc" />
         <label for="petType" class="text-sm font-medium text-gray-700 dark:text-gray-200">Type</label>
-        <select id="petType"
+        <select id="petType" name="type"
           class="block p-2 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-          <option value="dog">PetCare</option>
-          <option value="cat">PetHealth</option>
+          <option value="PetCare">PetCare</option>
+          <option value="PetHealth">PetHealth</option>
         </select>
         <label for="petType" class="text-sm font-medium text-gray-700 dark:text-gray-200">State</label>
-        <select id="petType"
+        <select id="petType" name="state"
           class="block p-2 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-          <option value="dog">กำลังดำเนินการ</option>
-          <option value="cat">เสร็จแล้ว</option>
+          <option value="กำลังดำเนินการ">กำลังดำเนินการ</option>
+          <option value="เสร็จแล้ว">เสร็จแล้ว</option>
         </select>
-        <Input type="date" placeholder="enter your Desciption" label="Date" />
-      </div>
+        <Input type="date" placeholder="enter your Desciption" label="Date" name="date" />
+        <div class="flex justify-between">
+          <button @click="closeModal" type="button"
+            class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+            Cancel
+          </button>
+          <button type="submit"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Confirm
+          </button>
+        </div>
+      </form>
     </template>
-    <template #footer>
+  </Modal>
+
+<Modal v-if="isShowEditModal" @close="closeEditModal">
+  <template #header>
+    <div class="flex items-center text-lg">
+      Edit Appointment
+    </div>
+  </template>
+  <template #body>
+    <form @submit.prevent="editAppointment" class="flex flex-col gap-2">
+      <Input placeholder="enter your Name" label="Name" name="title" />
+      <Input placeholder="enter your Desciption" label="Desciption" name="desc" />
+      <label for="petType" class="text-sm font-medium text-gray-700 dark:text-gray-200">Type</label>
+      <select id="petType" name="type"
+        class="block p-2 text-sm text-gray-900 border border-gray-300 rounded-lg w-full bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <option value="PetCare">PetCare</option>
+        <option value="PetHealth">PetHealth</option>
+      </select>
+      <label for="petType" class="text-sm font-medium text-gray-700 dark:text-gray-200">State</label>
+      <select id="petType" name="state"
+        class="block p-2 text-sm text-gray-900 border border-gray-300 rounded-lg w-full bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <option value="กำลังดำเนินการ">กำลังดำเนินการ</option>
+        <option value="เสร็จแล้ว">เสร็จแล้ว</option>
+      </select>
+      <Input type="date" placeholder="enter your Desciption" label="Date" name="date" />
       <div class="flex justify-between">
-        <button @click="closeModal" type="button"
+        <button @click="closeEditModal" type="button"
           class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
           Cancel
         </button>
-        <button @click="closeModal" type="button"
+        <button @click="closeEditModal" type="submit"
           class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
           Confirm
         </button>
       </div>
-    </template>
-  </Modal>
+    </form>
+  </template>
+</Modal>
+
 </template>

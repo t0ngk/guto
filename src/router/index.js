@@ -7,6 +7,7 @@ import Register from "../components/Register.vue";
 import User from "../components/User.vue";
 import Appointment from "../components/Appointment.vue";
 import PetCare from "../components/PetCare.vue";
+import Manage from "../components/Manage.vue";
 
 const routes = [
   { path: "/", component: Home },
@@ -16,6 +17,7 @@ const routes = [
   { path: "/user", component: User },
   { path: "/appointment", component: Appointment },
   { path: "/petcare", component: PetCare },
+  { path: "/manage", component: Manage },
 ];
 
 const router = createRouter({
