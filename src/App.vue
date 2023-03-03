@@ -1,13 +1,23 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <h1 class="text-3xl font-bold underline">
-    Hello world!
-  </h1>
+  <n-space>
+    <n-button>Default</n-button>
+    <n-button type="tertiary">
+      Tertiary
+    </n-button>
+    <n-button type="primary">
+      Primary
+    </n-button>
+    <n-button type="info">
+      Info
+    </n-button>
+    <n-button type="success">
+      Success
+    </n-button>
+    <n-button type="warning">
+      Warning
+    </n-button>
+    <n-button type="error">
+      Error
+    </n-button>
+  </n-space>
 </template>
-
-<style scoped>
-</style>
