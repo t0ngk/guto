@@ -8,6 +8,7 @@ import User from "../components/User.vue";
 import Appointment from "../components/Appointment.vue";
 import PetCare from "../components/PetCare.vue";
 import Manage from "../components/Manage.vue";
+import PetHealth from "../components/PetHealth.vue";
 
 const routes = [
   { path: "/", component: Home },
@@ -17,6 +18,7 @@ const routes = [
   { path: "/user", component: User },
   { path: "/appointment", component: Appointment },
   { path: "/petcare", component: PetCare },
+  { path: "/pethealth", component: PetHealth},
   { path: "/manage", component: Manage },
 ];
 
