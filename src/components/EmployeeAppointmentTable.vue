@@ -56,10 +56,23 @@ function showModal() {
 
 let isShowEditModal = ref(false)
 function closeEditModal() {
+  selectAppointment.value = null
   isShowEditModal.value = false
 }
-function showEditModal() {
+function showEditModal(id) {
+  selectAppointment.value = id
   isShowEditModal.value = true
+}
+
+let selectAppointment = ref(null)
+
+const deleteAppointment = () => {
+  const id = selectAppointment.value;
+  appointments.value.slice(appointments.value.findIndex(appointment => appointment.id == id), 1);
+  appointments.value = appointments.value.filter(appointment => appointment.id != id);
+  localStorage.setItem('appointments', JSON.stringify(appointments.value));
+
+  closeEditModal();
 }
 </script>
 <template>
@@ -148,7 +161,7 @@ function showEditModal() {
               {{ appointment.date }}
             </td>
             <td class="px-6 py-4">
-              <a @click="showEditModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+              <a @click="showEditModal(appointment.id)" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
             </td>
           </tr>
         </tbody>
@@ -221,7 +234,7 @@ function showEditModal() {
       </select>
       <Input type="date" placeholder="enter your Desciption" label="Date" name="date" />
       <div class="flex justify-between">
-        <button @click="closeEditModal" type="button"
+        <button @click="deleteAppointment()" type="button"
           class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
           Cancel
         </button>

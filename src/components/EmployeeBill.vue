@@ -68,10 +68,22 @@ function showModal() {
 
 let isShowEditModal = ref(false)
 const closeEditModal = () => {
+  selectBill.value = null
   isShowEditModal.value = false
 }
-const showEditModal = () => {
+const showEditModal = (id) => {
+  selectBill.value = id
   isShowEditModal.value = true
+}
+
+let selectBill = ref(null)
+
+const deleteBill = () => {
+  const id = selectBill.value;
+  bills.value = bills.value.filter(bill => bill.id != id);
+  localStorage.setItem('bills', JSON.stringify(bills.value));
+
+  closeEditModal();
 }
 </script>
 <template>
@@ -150,7 +162,7 @@ const showEditModal = () => {
               {{ bill.state }}
             </td>
             <td class="px-6 py-4">
-              <a @click="showEditModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+              <a @click="showEditModal(bill.id)" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
             </td>
           </tr>
         </tbody>
@@ -209,7 +221,7 @@ const showEditModal = () => {
           <option value="ชำระเงินแล้ว">ชำระเงินแล้ว</option>
         </select>
         <div class="flex justify-between">
-          <button @click="closeModal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+          <button @click="deleteBill" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
             Cancel
           </button>
           <button @click="closeModal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
