@@ -13,6 +13,8 @@ const pathname = ref();
 const noNeedNavBar = ['/login', '/register'];
 </script>
 <template>
-  <Navber/>
+  <n-message-provider>
+    <Navber />
+  </n-message-provider>
   <router-view></router-view>
 </template>
