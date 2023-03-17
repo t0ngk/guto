@@ -5,16 +5,16 @@ import { useRoute } from 'vue-router';
 import Navber from './views/Navbar.vue';
 
 const route = useRoute();
-watch(route, () => {
-  pathname.value = route.path.toLowerCase();
-});
 
-const pathname = ref();
-const noNeedNavBar = ['/login', '/register'];
+
+ watch(route, () => {
+   pathname.value = route.path.toLowerCase();
+ });
+
+ const pathname = ref();
+ const noNeedNavBar = ['/login', '/register'];
 </script>
 <template>
-  <n-message-provider>
-    <Navber />
-  </n-message-provider>
+  <Navber v-if="!(noNeedNavBar.includes(pathname))" />
   <router-view></router-view>
 </template>
