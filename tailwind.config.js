@@ -2,11 +2,9 @@
 module.exports = {
   content: [
     "./index.html",
-    "./src/**/*.{vue,js,ts,jsx,tsx,html}",
-    "node_modules/flowbite-vue/**/*.{js,jsx,ts,tsx}",
-    "node_modules/flowbite/**/*.{js,jsx,ts,tsx}",
+    "./src/**/*.{vue,js,ts,jsx,tsx,html}"
   ],
-  plugins: [require("flowbite/plugin")],
+  plugins: [],
   theme: {
     colors: {
       primary: {
@@ -20,11 +18,11 @@ module.exports = {
         700: "#a3401a",
         800: "#85331b",
         900: "#6e2b19",
-        DEFAULT: "#de7d24",
+        DEFAULT: "#de7d24"
       },
     },
     fontFamily: {
-      prompt: ["Prompt", "sans-serif"],
+      prompt: ["Prompt", "sans-serif"]
     },
   },
 };

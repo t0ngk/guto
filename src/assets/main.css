@@ -6,11 +6,3 @@
 * {
   @apply font-prompt;
 }
-
-.navbar {
-  @apply bg-primary !important;
-}
-
-.navbar-item {
-  @apply text-white hover:text-gray-200 text-lg !important;
-}
