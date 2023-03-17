@@ -1,38 +1,26 @@
 <script setup>
-import { useMessage } from "naive-ui";
+import { defineComponent } from "vue";
 import { ref } from "vue";
 
-const message = useMessage();
-
-const onSelect = (value) => {
-    message.info(`${value}`);
-}
-
-const options = ref([
+const options = [
     {
-        label: "Marina Bay Sands",
-        key: "marina bay sands",
-        disabled: true
+        label: 'Pet Care',
+        key: 'pet care'
     },
     {
-        label: "Brown's Hotel, London",
-        key: "brown's hotel, london"
-    },
-    {
-        label: "Atlantis Bahamas, Nassau",
-        key: "atlantis nahamas, nassau"
-    },
-    {
-        label: "The Beverly Hills Hotel, Los Angeles",
-        key: "the beverly hills hotel, los angeles"
+        label: 'Pet Health',
+        key: 'pet health'
     }
-]);
+]
+const handleSelect = (option) => {
+    console.log(option)
+}
 
 </script>
 
-<template>
 
-    <div class="bg-primary-500">
+<template>
+    <n-layout-header bordered class="bg-primary-500">
         <div class="py-5 flex justify-between px-16">
             <img src="../assets/Dog.svg" alt="Workflow" class="h-8 w-auto">
             <div class="flex-row md:flex md:gap-10 gap-16 text-xl items-center">
@@ -40,15 +28,19 @@ const options = ref([
                     <n-button text class="text-lg">หน้าหลัก</n-button>
                 </div>
                 <div>
-                    <n-dropdown trigger="hover" :options="options" @select="onSelect">
+                    <n-dropdown trigger="hover" :options="options" @select="handleSelect">
                         <n-button text class="text-lg">บริการ</n-button>
                     </n-dropdown>
                 </div>
                 <div>
-                    <n-button text class="text-lg">สมัครสมาชิก</n-button>
+                    <router-link to="/Register">
+                        <n-button text class="text-lg">สมัครสมาชิก</n-button>
+                    </router-link>
                 </div>
                 <div>
-                    <n-button text class="text-lg">เข้าสู่ระบบ</n-button>
+                    <router-link to="/Login">
+                        <n-button text class="text-lg">เข้าสู่ระบบ</n-button>
+                    </router-link>
                 </div>
                 <div>
                     <n-avatar class="hidden" round size="large"
@@ -56,5 +48,5 @@ const options = ref([
                 </div>
             </div>
         </div>
-    </div>
+    </n-layout-header>
 </template>
