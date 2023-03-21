@@ -8,7 +8,9 @@ import FormRegis from '../components/FormRegis.vue';
             <div class="w-full p-4 bg-primary">
                 <n-h1 class="text-5xl text-white pt-5">Register</n-h1>
             </div>
-            <FormRegis />
+            <n-message-provider>
+                <FormRegis />
+            </n-message-provider>
         </div>
     </div>
 </template>
