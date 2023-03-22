@@ -19,7 +19,7 @@ const rules = {
     Newuser: {
         fname: {
             required: true,
-            massage: 'กรุณากรอกชื่อต้นของคุณ',
+            message: 'กรุณากรอกชื่อต้นของคุณ',
             trigger: 'blur'
         },
         lname: {
@@ -29,22 +29,22 @@ const rules = {
         },
         email: {
             required: true,
-            massage: 'กรุณากรอกอีเมลของคุณ',
+            message: 'กรุณากรอกอีเมลของคุณ',
             trigger: 'blur'
         },
         password: {
             required: true,
-            massage: 'กรุณากรอกรหัสผ่านของคุณ',
+            message: 'กรุณากรอกรหัสผ่านของคุณ',
             trigger: ['blur', 'input']
         },
         conpassword: {
             required: true,
-            massage: 'กรุณากรอกยื่นยันรหัสผ่านของคุณ',
+            message: 'กรุณากรอกยื่นยันรหัสผ่านของคุณ',
             trigger: ['blur', 'input']
         },
         address: {
             required: true,
-            massage: 'กรุณากรอกที่อยู่ของคุณ',
+            message: 'กรุณากรอกที่อยู่ของคุณ',
             trigger: 'blur'
         },
     }
