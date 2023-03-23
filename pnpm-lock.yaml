@@ -4,6 +4,7 @@ specifiers:
   '@iconify/vue': ^4.1.0
   '@vitejs/plugin-vue': ^4.0.0
   autoprefixer: ^10.4.13
+  date-fns: ^2.29.3
   naive-ui: ^2.34.3
   postcss: ^8.4.21
   tailwindcss: ^3.2.7
@@ -14,6 +15,7 @@ specifiers:
   vue-router: '4'
 
 dependencies:
+  date-fns: 2.29.3
   vue: 3.2.47
   vue-router: 4.1.6_vue@3.2.47
 
@@ -456,18 +458,6 @@ packages:
     dev: true
     optional: true
 
-<<<<<<< Updated upstream
-=======
-  /@floating-ui/core/0.3.1:
-    resolution: {integrity: sha512-ensKY7Ub59u16qsVIFEo2hwTCqZ/r9oZZFh51ivcLGHfUwTn8l1Xzng8RJUe91H/UP8PeqeBronAGx0qmzwk2g==}
-    dev: false
-
-  /@floating-ui/dom/0.1.10:
-    resolution: {integrity: sha512-4kAVoogvQm2N0XE0G6APQJuCNuErjOfPW8Ux7DFxh8+AfugWflwVJ5LDlHOwrwut7z/30NUvdtHzQ3zSip4EzQ==}
-    dependencies:
-      '@floating-ui/core': 0.3.1
-    dev: false
-
   /@iconify/types/2.0.0:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
     dev: true
@@ -481,7 +471,6 @@ packages:
       vue: 3.2.47
     dev: true
 
->>>>>>> Stashed changes
   /@jridgewell/gen-mapping/0.1.1:
     resolution: {integrity: sha512-sQXCasFk+U8lWYEe66WxRDOE9PjVz4vSM51fTu3Hw+ClTpUSQb718772vH3pyS5pShp6lvQM7SxgIDXXXmOX7w==}
     engines: {node: '>=6.0.0'}
@@ -938,7 +927,6 @@ packages:
   /date-fns/2.29.3:
     resolution: {integrity: sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==}
     engines: {node: '>=0.11'}
-    dev: true
 
   /debug/4.3.4:
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
