@@ -22,10 +22,14 @@ const handleSelect = (option) => {
 <template>
     <n-layout-header bordered class="bg-primary-500">
         <div class="py-5 flex justify-between px-16">
-            <img src="../assets/Dog.svg" alt="Workflow" class="h-8 w-auto">
+            <router-link to="/">
+                <img src="../assets/Dog.svg" alt="Workflow" class="h-8 w-auto">
+            </router-link>
             <div class="flex-row md:flex md:gap-10 gap-16 text-xl items-center">
                 <div>
-                    <n-button text class="text-lg">หน้าหลัก</n-button>
+                    <router-link to="/">
+                        <n-button text class="text-lg">หน้าหลัก</n-button>
+                    </router-link>
                 </div>
                 <div>
                     <n-dropdown trigger="hover" :options="options" @select="handleSelect">
@@ -43,8 +47,10 @@ const handleSelect = (option) => {
                     </router-link>
                 </div>
                 <div>
-                    <n-avatar class="hidden" round size="large"
-                        src="https://07akioni.oss-cn-beijing.aliyuncs.com/07akioni.jpeg" />
+                    <router-link to="/User">
+                        <n-avatar class="" round size="large"
+                            src="https://07akioni.oss-cn-beijing.aliyuncs.com/07akioni.jpeg" />
+                    </router-link>
                 </div>
             </div>
         </div>
