@@ -4,16 +4,14 @@
 <template>
     <n-layout-content class="container mx-auto my-16">
         <n-h1 class="text-center">ศูนย์ความเป็นเลิศด้านการดูแล และ ศูนย์ความเป็นเลิศด้านการรักษา</n-h1>
-        <p class="text-primary text-base font-bold text-center">ศูนย์ความเป็นเลิศด้านการดูแลคลินิกสัตว์เลี้ย
+        <p class="text-primary text-base font-bold text-center mx-28">ศูนย์ความเป็นเลิศด้านการดูแลคลินิกสัตว์เลี้ยง
             ครอบคลุมทั้งการตรวจ รักษา
             และดูแลอย่างต่อเนื่อง ด้วยประสบการณ์
             และมาตรฐานระดับสากล รวมถึงประสานการส่งต่อสัตว์ป่วยเพื่อรับคำปรึกษา
             หรือเข้ามารับการดูแลและส่งกลับไปดูแลต่อยังเจ้าของ</p>
 
-
-
         <n-carousel autoplay class="my-12">
-            <div class="carousel-img flex"> 
+            <div class="carousel-img flex">
                 <img src="../assets/Animal-Care-Welfare-First-aid.jpg" alt="">
             </div>
             <img class="carousel-img" src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel2.jpeg">
@@ -24,7 +22,7 @@
 
         <section>
             <div class="flex justify-center gap-36 my-12">
-                <n-card title="Pet Health" hoverable>
+                <n-card title="Pet Health" hoverable class="shadow-2xl">
                     <template #cover>
                         <img src="../assets/Animal-Care-Welfare-First-aid.jpg">
                     </template>
@@ -36,7 +34,7 @@
                     <n-button class="float-right mt-6">ดูเพิ่มเติม</n-button>
                 </n-card>
 
-                <n-card title="Pet Care" hoverable>
+                <n-card title="Pet Care" hoverable class="shadow-2xl">
                     <template #cover>
                         <img src="../assets/course_4335051.jpg">
                     </template>
@@ -49,6 +47,28 @@
                 </n-card>
             </div>
         </section>
+        <n-card class="">
+            <n-row>
+                <n-col :span="12">
+                    <n-statistic label="Statistic" :value="99">
+                        <template #prefix>
+                            <n-icon>
+                                <md-save />
+                            </n-icon>
+                        </template>
+                        <template #suffix>
+                            / 100
+                        </template>
+                    </n-statistic>
+                </n-col>
+                <n-col :span="12">
+                    <n-statistic label="Active Users">
+                        1,234,123
+                    </n-statistic>
+                </n-col>
+            </n-row>
+
+        </n-card>
     </n-layout-content>
 </template>
 
@@ -57,7 +77,7 @@
     @apply max-w-lg;
 }
 
-.carousel-img{
+.carousel-img {
     @apply w-full h-[240px] object-cover;
 }
 </style>
