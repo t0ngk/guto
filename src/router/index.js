@@ -4,12 +4,14 @@ import Home from "../views/Home.vue";
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 import Appointment from "../views/Appointment.vue";
+import User from "../views/User.vue";
 
 const routes = [
     { path: "/", component: Home },
     { path: "/login", component: Login },
     { path: "/register", component: Register },
     { path: "/appointment", component: Appointment },
+    { path: "/user", component: User },
   ];
   
   const router = createRouter({
