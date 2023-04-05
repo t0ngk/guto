@@ -2,6 +2,7 @@
 import { ref, computed } from "vue";
 import { isYesterday, addDays } from "date-fns/esm";
 import { useMessage } from "naive-ui";
+import { Icon } from '@iconify/vue'
 //All Data
 const message = useMessage();
 let model = ref({
@@ -15,6 +16,7 @@ let model = ref({
     dateAppointmemt: addDays(Date.now(), 1).valueOf(),
     timeAppointmemt: null,
     service: null,
+    serviceOf: null,
 })
 
 // Step 
@@ -208,7 +210,7 @@ let handleValidateButtonClick = (e) => {
                         </n-space>
                         <n-space class="my-10 w-1/2 mx-auto" vertical v-if="model.radioService == 'เคยใช้บริการมาก่อน'">
                             <n-form-item label="เลือกสัตว์เลี้ยงของคุณ :" path="optionsPet.value">
-                                <n-select :options="optionsPet" v-model="optionsPet.value"
+                                <n-select :options="optionsPet" v-model:value="model.namePet"
                                     placeholder="กรุณาเลือกสัตว์เลี้ยง" />
                             </n-form-item>
                         </n-space>
@@ -290,7 +292,7 @@ let handleValidateButtonClick = (e) => {
                             </n-space>
                             <div v-if="model.service == 'PetCare'">
                                 <n-card title="เลือกบริการที่ต้องการ :" class="my-6">
-                                    <n-radio-group v-model:value="value" name="radiobuttongroup3" size="large">
+                                    <n-radio-group v-model:value="model.serviceOf" name="radiobuttongroup3" size="large">
                                         <n-radio-button v-for="option in optionsService.PetCare" :key="option.value"
                                             :value="option.value">
                                             {{ option.label }}
@@ -300,7 +302,7 @@ let handleValidateButtonClick = (e) => {
                             </div>
                             <div v-if="model.service == 'PetHealth'">
                                 <n-card title="เลือกบริการที่ต้องการ :" class="my-6">
-                                    <n-radio-group v-model:value="value" name="radiobuttongroup3" size="large">
+                                    <n-radio-group v-model:value="model.serviceOf" name="radiobuttongroup3" size="large">
                                         <n-radio-button v-for="option in optionsService.PetHealth" :key="option.value"
                                             :value="option.value">
                                             {{ option.label }}
@@ -317,16 +319,113 @@ let handleValidateButtonClick = (e) => {
                                 สรุปการนัดหมาย :
                             </n-h3>
                             <n-space vertical justify="center">
-                                
+                                <n-card>
+                                    <n-grid :x-gap="24" :y-gap="24" :span="24">
+                                        <n-gi :span="12">
+                                            <n-gradient-text type="info">
+                                                ประเภทการใช้บริการ :
+                                            </n-gradient-text>
+                                            <n-text class="px-8">
+                                                {{ model.service }}
+                                            </n-text>
+                                        </n-gi>
+                                        <n-gi :span="12">
+                                            <n-gradient-text type="info">
+                                                ชื่อเจ้าของ :
+                                            </n-gradient-text>
+                                            <n-text class="px-8">
+                                                <!--Username from Register-->
+                                                สมชาย สมบัติ
+                                            </n-text>
+                                        </n-gi>
+                                        <n-gi :span="12">
+                                            <n-gradient-text type="info">
+                                                เคยใช้บริการมาก่อนหรือไม่ :
+                                            </n-gradient-text>
+                                            <n-text class="px-8">
+                                                <!--Username from Register-->
+                                                {{ model.radioService }}
+                                            </n-text>
+                                        </n-gi>
+                                        <n-gi :span="12">
+                                            <n-gradient-text type="info">
+                                                เบอร์ติดต่อ :
+                                            </n-gradient-text>
+                                            <n-text class="px-8">
+                                                <!---Phone number of User-->
+                                                099-999-9999
+                                            </n-text>
+                                        </n-gi>
+                                    </n-grid>
+                                </n-card>
                             </n-space>
+                            <n-h3>
+                                รายละเอียดการนัดหมาย :
+                            </n-h3>
+                            <n-card>
+                                <n-grid :cols="4" :x-gap="84">
+                                    <n-gi>
+                                        <div class="flex flex-col justify-center">
+                                            <Icon icon="material-symbols:date-range" class="text-8xl self-center" />
+                                            <n-text class="text-center self-center">
+                                                {{ model.dateAppointmemt }}
+                                            </n-text>
+                                        </div>
+                                    </n-gi>
+                                    <n-gi>
+                                        <div class="flex flex-col justify-center">
+                                            <Icon icon="material-symbols:nest-clock-farsight-analog-outline-rounded"
+                                                class="text-8xl self-center" />
+                                            <n-text class="text-center">
+                                                {{ model.timeAppointmemt }}
+                                            </n-text>
+                                        </div>
+                                    </n-gi>
+                                    <n-gi>
+                                        <div class="flex flex-col justify-center">
+                                            <Icon icon="material-symbols:health-and-safety-outline-rounded"
+                                                class="text-8xl self-center" />
+                                            <n-text class="text-center">
+                                                {{ model.serviceOf }}
+                                            </n-text>
+                                        </div>
+                                    </n-gi>
+                                    <n-gi class="text-">
+                                        <div class="flex flex-col justify-center">
+                                            <Icon icon="material-symbols:pets" class="text-8xl self-center" />
+                                            <n-text class="text-center">
+                                                {{ model.namePet }}
+                                            </n-text>
+                                        </div>
+                                    </n-gi>
+                                </n-grid>
+                            </n-card>
                         </n-card>
                     </div>
+                    <!-----------------------------------------------------STEP 5-------------------------------------------------------------->
+                    <div v-if="currentRef == 5" class="mx-24">
+                        <n-result status="success" title="Success" description="รอการตอบกลับจากเรานะค่ะ">
+                            <template #footer>
+                                <n-button class="bg-primary-500" type="primary">Ok</n-button>
+                            </template>
+                        </n-result>
+                    </div>
                     <n-space justify="space-between">
-                        <n-button v-show="currentRef != 1" type="primary" @click="currentRef--">Back</n-button>
-                        <n-button v-show="currentRef != 5" type="primary" @click="currentRef++">Next</n-button>
+                        <n-button class="bg-primary-500" v-show="currentRef != 1" type="primary"
+                            @click="currentRef--">Back</n-button>
+                        <n-button class="bg-primary-500" v-show="currentRef != 5" type="primary"
+                            @click="currentRef++">Next</n-button>
                     </n-space>
                 </n-form>
             </n-layout-content>
         </n-layout>
     </n-card>
-    <pre>{{ JSON.stringify(model, null, 2) }} </pre></template>
+    <pre>{{ JSON.stringify(model, null, 2) }} </pre>
+</template>
+
+<style>
+.n-gradient-text {
+    font-size: 18px;
+    @apply font-bold;
+}
+</style>
