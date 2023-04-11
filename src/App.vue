@@ -17,6 +17,11 @@ const themeOverrides = {
     "dividerColor": "rgba(200, 200, 200, 1)",
     "bodyColor": "#F8F1F1FF"
   },
+  "Carousel": {
+    "dotColor": "#f2d195FF",
+    "dotColorFocus": "#ebb55eFF",
+    "dotColorActive": "#e69c39FF"
+  },
   Button: {
     "textColor": "rgba(0, 0, 0, 0.65)",
     "color": "#000"
