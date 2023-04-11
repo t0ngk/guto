@@ -1,84 +1,125 @@
-<script>
+<script setup>
+import slide from "../components/Slide.vue";
+import { Icon } from "@iconify/vue";
 
+let reveal = () => {
+    var reveals = document.querySelectorAll(".reveal");
+
+    for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = reveals[i].getBoundingClientRect().top;
+        var elementVisible = 150;
+
+        if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add("active");
+        } else {
+            reveals[i].classList.remove("active");
+        }
+    }
+}
+
+window.addEventListener("scroll", reveal);
 </script>
 <template>
-    <n-layout-content class="container mx-auto my-16">
-        <n-h1 class="text-center">ศูนย์ความเป็นเลิศด้านการดูแล และ ศูนย์ความเป็นเลิศด้านการรักษา</n-h1>
-        <p class="text-primary text-base font-bold text-center mx-28">ศูนย์ความเป็นเลิศด้านการดูแลคลินิกสัตว์เลี้ยง
-            ครอบคลุมทั้งการตรวจ รักษา
-            และดูแลอย่างต่อเนื่อง ด้วยประสบการณ์
-            และมาตรฐานระดับสากล รวมถึงประสานการส่งต่อสัตว์ป่วยเพื่อรับคำปรึกษา
-            หรือเข้ามารับการดูแลและส่งกลับไปดูแลต่อยังเจ้าของ</p>
-
-        <n-carousel autoplay class="my-12">
-            <div class="carousel-img flex">
-                <img src="../assets/Animal-Care-Welfare-First-aid.jpg" alt="">
+    <section class="my-32">
+        <div class="flex flex-col-reverse justify-between mx-16 md:flex-row">
+            <div class="flex flex-col items-center">
+                <div class="typewriter">
+                    <n-h2 class="font-semibold">Place that <span class="text-primary-500">care</span> everything that <span
+                            class="text-primary-500">you care</span></n-h2>
+                </div>
+                <div class="pt-3 w-2/3">
+                    <p class="text-base">ศูนย์ความเป็นเลิศด้านการดูแลคลินิกสัตว์เลี้ยงครอบคลุมทั้งการตรวจรักษา
+                        และ ดูแลอย่างต่อเนื่อง ด้วยประสบการณ์ และ มาตรฐานระดับสากล
+                        รวมถึงประสานการส่งต่อสัตว์ป่วยเพื่อรับคำปรึกษา
+                        หรือเข้ามารับการดูแลและส่งกลับไปดูแลต่อยังเจ้าของ</p>
+                </div>
             </div>
-            <img class="carousel-img" src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel2.jpeg">
-            <img class="carousel-img" src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel3.jpeg">
-            <img class="carousel-img" src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel4.jpeg">
-        </n-carousel>
-
-
-        <section>
-            <div class="flex justify-center gap-36 my-12">
-                <n-card title="Pet Health" hoverable class="shadow-2xl">
-                    <template #cover>
-                        <img src="../assets/Animal-Care-Welfare-First-aid.jpg">
-                    </template>
-                    <p class="text-sm">
-                        คลินิกสัตว์เลี้ยง ครอบคลุมทั้งการตรวจ รักษา และดูแลอย่างต่อเนื่อง ด้วยประสบการณ์
-                        และมาตรฐานระดับสากล รวมถึงประสานการส่งต่อสัตว์ป่วยเพื่อรับคำปรึกษา
-                        หรือเข้ามารับการดูแลและส่งกลับไปดูแลต่อยังเจ้าของ
-                    </p>
-                    <n-button class="float-right mt-6">ดูเพิ่มเติม</n-button>
-                </n-card>
-
-                <n-card title="Pet Care" hoverable class="shadow-2xl">
-                    <template #cover>
-                        <img src="../assets/course_4335051.jpg">
-                    </template>
-                    <p class="text-sm">
-                        คลินิกสัตว์เลี้ยง ครอบคลุมทั้งการตรวจ รักษา และดูแลอย่างต่อเนื่อง ด้วยประสบการณ์
-                        และมาตรฐานระดับสากล รวมถึงประสานการส่งต่อสัตว์ป่วยเพื่อรับคำปรึกษา
-                        หรือเข้ามารับการดูแลและส่งกลับไปดูแลต่อยังเจ้าของ
-                    </p>
-                    <n-button class="float-right mt-6">ดูเพิ่มเติม</n-button>
-                </n-card>
+            <div>
+                <img src="../assets/pet.svg" class="h-4/5">
             </div>
-        </section>
-        <n-card class="">
-            <n-row>
-                <n-col :span="12">
-                    <n-statistic label="Statistic" :value="99">
-                        <template #prefix>
-                            <n-icon>
-                                <md-save />
-                            </n-icon>
-                        </template>
-                        <template #suffix>
-                            / 100
-                        </template>
-                    </n-statistic>
-                </n-col>
-                <n-col :span="12">
-                    <n-statistic label="Active Users">
-                        1,234,123
-                    </n-statistic>
-                </n-col>
-            </n-row>
+        </div>
 
-        </n-card>
-    </n-layout-content>
+    </section>
+
+    <section class="my-32 reveal">
+        <n-h1 class="text-center font-semibold">การบริการ</n-h1>
+        <slide />
+    </section>
+
+    <section class="my-64 reveal">
+        <n-h1 class="text-center font-semibold">ทำไมต้องเลือกเรา</n-h1>
+        <div class="flex justify-around items-center">
+            <div class="flex flex-col">
+                <Icon icon="healthicons:doctor-outline" class="text-8xl self-center" />
+                <n-p class="font-medium text-lg">มีผู้เชี่ยวชาญมือหนึ่ง</n-p>
+            </div>
+            <div class="flex flex-col">
+                <Icon icon="material-symbols:home-repair-service-outline-rounded" class="text-8xl self-center" />
+                <n-p class="font-medium text-lg">มีเครื่องมือที่พร้อม</n-p>
+            </div>
+            <div class="flex flex-col">
+                <Icon icon="mdi:customer-service" class="text-8xl self-center" />
+                <n-p class="font-medium text-lg">มีคนดูแล 24 ชม.</n-p>
+            </div>
+            <div class="flex flex-col">
+                <Icon icon="map:veterinary-care" class="text-8xl self-center" />
+                <n-p class="font-medium text-lg">สามารถรักษาได้ทุกรูปแบบ</n-p>
+            </div>
+        </div>
+    </section>
 </template>
 
 <style scoped>
-.n-card {
-    @apply max-w-lg;
+.typewriter h2 {
+    overflow: hidden;
+    /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid orange;
+    /* The typwriter cursor */
+    white-space: nowrap;
+    /* Keeps the content on a single line */
+    margin: 0 auto;
+    /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em;
+    /* Adjust as needed */
+    animation:
+        typing 3.5s steps(40, end),
+        blink-caret .75s step-end infinite;
 }
 
-.carousel-img {
-    @apply w-full h-[240px] object-cover;
+@keyframes typing {
+    from {
+        width: 0
+    }
+
+    to {
+        width: 100%
+    }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: orange;
+    }
+}
+
+.reveal {
+    position: relative;
+    transform: translateY(150px);
+    opacity: 0;
+    transition: 1s all ease;
+}
+
+.reveal.active {
+    transform: translateY(0);
+    opacity: 1;
 }
 </style>
 
