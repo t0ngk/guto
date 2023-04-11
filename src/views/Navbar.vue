@@ -21,9 +21,9 @@ const handleSelect = (option) => {
 
 <template>
     <n-layout-header bordered class="bg-primary-500">
-        <div class="py-5 flex justify-between px-16">
+        <div class="py-2 flex justify-between items-center px-16">
             <router-link to="/">
-                <img src="../assets/Dog.svg" alt="Workflow" class="h-8 w-auto">
+                <img src="../assets/logo.svg" alt="Workflow" class="h-[80px] w-auto">
             </router-link>
             <div class="flex-row md:flex md:gap-10 gap-16 text-xl items-center">
                 <div>
