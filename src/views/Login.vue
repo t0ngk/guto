@@ -7,12 +7,15 @@ import FormLogin from '../components/FormLogin.vue';
     <n-layout-content>
         <div class="w-screen h-screen flex transition-all">
             <div class="w-1/2 bg-primary md:flex flex-col justify-center items-center hidden">
-                <img src="src/assets/Dog.svg" alt="" srcset="" class="w-1/4">
-                <h1 class="text-5xl text-white">Guto</h1>
+                <img src="../assets/logo.svg" alt="" srcset="" class="w-1/4">
             </div>
-            <n-message-provider>
-                <FormLogin />
-            </n-message-provider>
+            <div class="w-auto h-auto my-auto mx-auto">
+                <n-card class="shadow-2xl" hoverable>
+                    <n-message-provider>
+                        <FormLogin />
+                    </n-message-provider>
+                </n-card>
+            </div>
         </div>
     </n-layout-content>
 </template>
